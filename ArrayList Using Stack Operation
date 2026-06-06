@@ -1,20 +1,20 @@
-import java.util.Stack;
+import java.util.ArrayList;
 
 public class ArraylistStack {
     public static void main(String[] args) {
 
-        Stack<Integer> stack = new Stack<>();
+        ArrayList<Integer> stack = new ArrayList<>();
 
-        stack.push(10);
-        stack.push(20);
-        stack.push(30);
+        stack.add(1);
+        stack.add(2);
+        stack.add(3);
+        System.out.println("After Push: " + stack);
 
-        System.out.println("Stack after push: " + stack);
+        System.out.println("Peek: " + stack.get(stack.size() - 1));
 
-        System.out.println("Top element (peek): " + stack.peek());
+        int popped = stack.remove(stack.size() - 1);
+        System.out.println("Popped Element: " + popped);
 
-        System.out.println("Popped element: " + stack.pop());
-
-        System.out.println("Stack after pop: " + stack);
+        System.out.println("After Pop: " + stack);
     }
 }
