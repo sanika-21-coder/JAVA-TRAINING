@@ -4,19 +4,24 @@ public class GraphMatrix {
 
     public GraphMatrix(int numVertices) {
         this.numVertices = numVertices;
-        adjacencyMatrix = new int[numVertices][numVertices];
+        this.adjacencyMatrix = new int[numVertices][numVertices];
     }
 
     public void addEdge(int source, int destination) {
         adjacencyMatrix[source][destination] = 1;
-        adjacencyMatrix[destination][source] = 1;
+        adjacencyMatrix[destination][source] = 1; // Undirected Graph
+    }
+
+    public void removeEdge(int source, int destination) {
+        adjacencyMatrix[source][destination] = 0;
+        adjacencyMatrix[destination][source] = 0;
     }
 
     public void printGraph() {
         System.out.println("Adjacency Matrix:");
 
-        for (int i = 1; i < numVertices; i++) {
-            for (int j = 1; j < numVertices; j++) {
+        for (int i = 0; i < numVertices; i++) {
+            for (int j = 0; j < numVertices; j++) {
                 System.out.print(adjacencyMatrix[i][j] + " ");
             }
             System.out.println();
@@ -25,22 +30,19 @@ public class GraphMatrix {
 
     public static void main(String[] args) {
 
-        GraphMatrix graph = new GraphMatrix(10);
+        GraphMatrix graph = new GraphMatrix(9);
 
+        graph.addEdge(0, 1);
+        graph.addEdge(0, 7);
         graph.addEdge(1, 2);
-        graph.addEdge(2, 3);
-        graph.addEdge(3, 4);
-
-        graph.addEdge(4, 7);
-        graph.addEdge(3, 6);
-
+        graph.addEdge(1, 3);
+        graph.addEdge(2, 4);
         graph.addEdge(2, 5);
+        graph.addEdge(3, 4);
+        graph.addEdge(4, 6);
+        graph.addEdge(4, 7);
         graph.addEdge(5, 6);
-        graph.addEdge(6, 7);
-
-        graph.addEdge(1, 8);
-        graph.addEdge(8, 6);
-        graph.addEdge(8, 9);
+        graph.addEdge(7, 8);
 
         graph.printGraph();
     }
